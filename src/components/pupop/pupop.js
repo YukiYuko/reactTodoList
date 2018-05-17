@@ -42,7 +42,6 @@ class Pupop extends Component{
 
     render() {
         console.log(this.props.planlist.show)
-        let self = this;
         return (
             <section className="popup" style={this.props.planlist.show ? {} : {display: 'none'}}>
                 <div className="pbox">

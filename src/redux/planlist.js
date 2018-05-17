@@ -21,9 +21,9 @@ const planReducer = function(state = initialState, action) {
         // 显示、隐藏弹出层
         case types.SHOW:
             return Object.assign({}, state, { show: action.show });
+        default:
+            return state
     }
-    return state;
-
 };
 
 export default planReducer;

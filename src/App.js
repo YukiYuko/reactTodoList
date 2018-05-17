@@ -5,7 +5,7 @@ import {
     Link
 } from 'react-router-dom'
 // 引入 store
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 import store from './redux/store.js'
 import logo from './logo.svg'
 import Plan from './components/plan/plan.js'
@@ -19,9 +19,9 @@ import './styles/comment.css'
 import createHistory from 'history/createBrowserHistory'
 const history = createHistory()
 class App extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
     render() {
         return (
             // store的挂载

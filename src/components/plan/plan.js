@@ -5,9 +5,9 @@ import store from '../../redux/store.js';
 import {show, deletePlan} from '../../actions/plan.js';
 
 class Plan extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
     // 显示弹出
     show () {
         // let b = this.props.planlist.show;
