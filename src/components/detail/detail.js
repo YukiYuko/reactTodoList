@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import store from '../redux/store.js';
+import store from '../../redux/store.js';
 
 
 class Detail extends Component {

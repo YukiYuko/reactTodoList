@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import store from '../redux/store.js';
+import store from '../../redux/store.js';
 // 引入 定义的 action
-import {show, deletePlan} from '../actions/plan.js';
+import {show, deletePlan} from '../../actions/plan.js';
 
 class Plan extends Component {
     constructor(props) {

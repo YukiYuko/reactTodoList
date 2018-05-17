@@ -8,11 +8,11 @@ import {
 import { Provider, connect } from 'react-redux';
 import store from './redux/store.js'
 import logo from './logo.svg'
-import Plan from './components/plan.js'
-import Home from './components/home.js'
-import Popup from './components/pupop.js'
-import TestRouter from './components/testrouter.js'
-import Detail from './components/detail.js'
+import Plan from './components/plan/plan.js'
+import Home from './components/home/home.js'
+import Popup from './components/pupop/pupop.js'
+import TestRouter from './components/testrouter/testrouter.js'
+import Detail from './components/detail/detail.js'
 import './App.css'
 import './styles/reset.css'
 import './styles/comment.css'
@@ -31,7 +31,7 @@ class App extends Component {
                         <img src={logo} className="App-logo" alt="logo" />
                         <h2 className='App-title'>Welcome to React Plan</h2>
                     </div>
-                    <div>
+                    <div className="router-view">
                         <Router history = {history}>
                             <div className="contentBox">
                                 <ul className="nav">
