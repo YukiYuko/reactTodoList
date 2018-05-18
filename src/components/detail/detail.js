@@ -6,8 +6,10 @@ import { connect } from 'react-redux';
 class Detail extends Component {
     constructor(props) {
         super(props);
+        console.log(props);
         // 根据路由 id 跟 store 做过滤
-        let item = props.planlist.planlist.filter((data) => data.id === props.match.params.id)
+        let id = parseInt(props.match.params.id, 10);
+        let item = props.planlist.planlist.filter((data) => data.id === id);
         console.log(item);
         this.state = {
             plan: item[0]
@@ -32,5 +34,6 @@ const mapStateToProps = function(store) {
         planlist: store.planlist
     };
 };
-// 连接 tore 和组件
+// 连接 store 和组件
 export default connect(mapStateToProps)(Detail);
+// export default Detail;

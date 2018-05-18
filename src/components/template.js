@@ -3,8 +3,7 @@ import { Button } from 'antd';
 import './home.less'
 class Home extends Component {
     // constructor (props) {
-    //     super(props);
-    //     console.log(props)
+    //     super(props)
     // }
     render () {
         return (
@@ -18,4 +17,4 @@ class Home extends Component {
     }
 }
 
-export  default Home
+export default Home

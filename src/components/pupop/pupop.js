@@ -10,7 +10,7 @@ class Pupop extends Component{
             id: '',
             title: '1',
             content: '1'
-        }
+        };
     }
     // 取消按钮操作
     close () {

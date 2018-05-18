@@ -3,10 +3,12 @@ import { combineReducers } from 'redux';
 
 // Reducers
 import planlist from './planlist';
+import com from './com';
 
 // Combine Reducers
 const reducers = combineReducers({
-    planlist
+    planlist,
+    com
 });
 
 export default reducers;

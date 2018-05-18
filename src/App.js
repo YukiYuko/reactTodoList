@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import {
     Router,
-    Route,
-    Link
+    Route
 } from 'react-router-dom'
 // 引入 store
 import { Provider } from 'react-redux';
 import store from './redux/store.js'
-import logo from './logo.svg'
+import PublicHeader from './components/public/header'
 import Plan from './components/plan/plan.js'
 import Home from './components/home/home.js'
 import Popup from './components/pupop/pupop.js'
@@ -26,19 +25,11 @@ class App extends Component {
         return (
             // store的挂载
             <Provider store={store}>
-                <div className="App">
-                    <div className="App-header">
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <h2 className='App-title'>Welcome to React Plan</h2>
-                    </div>
-                    <div className="router-view">
-                        <Router history = {history}>
+                <Router history = {history}>
+                    <div className="App">
+                        <PublicHeader/>
+                        <div className="router-view">
                             <div className="contentBox">
-                                <ul className="nav">
-                                    <li><Link to="/">首页</Link></li>
-                                    <li><Link to="/plan">计划表</Link></li>
-                                    <li><Link to="/test">二级路由</Link></li>
-                                </ul>
                                 <div className="content">
                                     <Route exact path="/" component={Home}/>
                                     <Route path="/plan" component={Plan}/>
@@ -46,10 +37,10 @@ class App extends Component {
                                     <Route path="/detail/:id" component={Detail}/>
                                 </div>
                             </div>
-                        </Router>
+                        </div>
+                        <Popup/>
                     </div>
-                    <Popup/>
-                </div>
+                </Router>
             </Provider>
         );
     }
