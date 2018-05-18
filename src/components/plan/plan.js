@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import store from '../../redux/store.js';
 import { Modal, Button, notification } from 'antd'
+import {Motion, spring} from 'react-motion';
 // 引入 定义的 action
 import {deletePlan, addPlan} from '../../actions/plan.js';
 
@@ -13,7 +14,17 @@ class Plan extends Component {
         visible: false,
         d: '',
         title: '来添加一个任务吧',
-        content: '这是任务的内容哦'
+        content: '这是任务的内容哦',
+        focused: false,
+        height: 38
+    };
+    // 动画
+    animate = () => {
+        this.setState((state) => ({ height: state.height === 233 ? 38 : 233 }))
+    };
+    // 获得焦点
+    focus = () => {
+        this.setState((state) => ({ focused: !state.focused }))
     };
     // 显示弹出
     showModal = () => {
@@ -86,6 +97,21 @@ class Plan extends Component {
                         <Button type="primary" onClick={this.showModal}>添加计划</Button>
                     </h3>
                 </div>
+                <div className="example_animate" style={styles.content}>
+                    <div style={styles.button} onClick={this.animate}>Animate</div>
+                    <Motion style={{ height: spring(this.state.height) }}>
+                        {
+                            ({ height }) => <div style={Object.assign({}, styles.menu, { height } )}>
+                                <p style={styles.selection}>Selection 1</p>
+                                <p style={styles.selection}>Selection 2</p>
+                                <p style={styles.selection}>Selection 3</p>
+                                <p style={styles.selection}>Selection 4</p>
+                                <p style={styles.selection}>Selection 5</p>
+                                <p style={styles.selection}>Selection 6</p>
+                            </div>
+                        }
+                    </Motion>
+                </div>
                 <div className="planlist">
                     <table>
                         <thead>
@@ -123,7 +149,13 @@ class Plan extends Component {
                     <div className="pbox">
                         <div>
                             <h4>计划标题</h4>
-                            <input onChange={this.handleChage.bind(this, 'title')} value={this.state.title} placeholder="请输入计划标题"/>
+                            <input
+                                onFocus={this.focus}
+                                onBlur={this.focus}
+                                className={['input',this.state.focused && 'input-focused'].join(' ')}
+                                onChange={this.handleChage.bind(this, 'title')}
+                                value={this.state.title}
+                                placeholder="请输入计划标题"/>
                         </div>
                         <div>
                             <h4>计划内容</h4>
@@ -137,6 +169,36 @@ class Plan extends Component {
     }
 }
 
+const styles = {
+    content: {
+      textAlign: 'center'
+    },
+    menu: {
+        overflow: 'hidden',
+        border: '2px solid #ddd',
+        width: 300,
+        marginTop: 20,
+        marginLeft: 'auto',
+        marginRight: 'auto'
+    },
+    selection: {
+        padding: 10,
+        margin: 0,
+        borderBottom: '1px solid #ededed'
+    },
+    button: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        display: 'flex',
+        cursor: 'pointer',
+        width: 200,
+        height: 45,
+        border: 'none',
+        borderRadius: 4,
+        backgroundColor: '#ffc107',
+        margin: 'auto'
+    },
+};
 const mapStateToProps = function(store) {
     return {
         planlist: store.planlist
